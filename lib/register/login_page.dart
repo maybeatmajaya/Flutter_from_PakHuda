@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'register_page.dart'; // Import halaman Register
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,55 +9,71 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool _isPasswordVisible = false; // Untuk mengontrol visibilitas password
+  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent, // Warna latar belakang AppBar
-        centerTitle: true, // Memusatkan teks di AppBar
-        title: const Text(
-          'Halaman Login',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.normal,
-          ),
-        ),
-      ),
-
-      body: Container(
-        margin: const EdgeInsets.fromLTRB(10, 30, 20, 20), // Memberikan margin pada Container
-        child: Column(
-          children: [
-            // Input Email
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextField(
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.email), 
-                  labelText: 'Email',
-                  hintText: 'Masukkan Email Anda',
-                  border: OutlineInputBorder(),
+      backgroundColor: Colors.white,
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Logo atau Icon
+              const Icon(
+                Icons.lock_outline,
+                size: 80,
+                color: Colors.blueAccent,
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Selamat Datang',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
                 ),
               ),
-            ),
+              const SizedBox(height: 10),
+              const Text(
+                'Silakan login untuk melanjutkan',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
+              ),
+              const SizedBox(height: 30),
 
-            // Input Password dengan ikon mata
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextField(
-                obscureText: !_isPasswordVisible, // Mengontrol visibilitas password
+              // Input Email
+              TextField(
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.lock),
+                  prefixIcon: const Icon(Icons.email, color: Colors.blueAccent),
+                  labelText: 'Email',
+                  hintText: 'Masukkan Email Anda',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Input Password
+              TextField(
+                obscureText: !_isPasswordVisible,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.lock, color: Colors.blueAccent),
                   labelText: 'Password',
                   hintText: 'Masukkan Password Anda',
-                  border: const OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   suffixIcon: IconButton(
                     icon: Icon(
                       _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.blueAccent,
                     ),
                     onPressed: () {
                       setState(() {
@@ -66,32 +83,47 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-            ),
+              const SizedBox(height: 30),
 
-            // Tombol Login
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SizedBox(
-                width: double.infinity, // Lebar tombol penuh
+              // Tombol Login
+              SizedBox(
+                width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Tambahkan aksi login di sini
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Login Berhasil!')),
                     );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueAccent,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                   child: const Text(
                     'LOGIN',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 20),
+
+              // Tombol pindah ke Register
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const RegisterPage()),
+                  );
+                },
+                child: const Text(
+                  'Belum punya akun? Register di sini',
+                  style: TextStyle(color: Colors.blueAccent, fontSize: 16),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
