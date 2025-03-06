@@ -34,7 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
         backgroundColor: Colors.blueAccent,
         centerTitle: true,
         title: const Text(
-          'Halaman Register',
+          'Daftar Akun',
           style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
         ),
       ),
@@ -77,17 +77,22 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  TextField(
-                    controller: _dateController,
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.calendar_today, color: Colors.blueAccent),
-                      labelText: 'Birth Date',
-                      hintText: 'Pilih Tanggal Lahir',
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.date_range, color: Colors.blueAccent),
-                        onPressed: () => _selectDate(context),
+                  GestureDetector(
+                    onTap: () => _selectDate(context),
+                    child: AbsorbPointer(
+                      child: TextField(
+                        controller: _dateController,
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.calendar_today, color: Colors.blueAccent),
+                          labelText: 'Tanggal Lahir',
+                          hintText: 'Pilih Tanggal Lahir',
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.date_range, color: Colors.blueAccent),
+                            onPressed: () => _selectDate(context),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -97,7 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     value: _selectedGender,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.wc, color: Colors.blueAccent),
-                      labelText: 'Gender',
+                      labelText: 'Jenis Kelamin',
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                     ),
                     items: ['Laki-laki', 'Perempuan'].map((String gender) {
@@ -114,13 +119,13 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  _buildTextField(Icons.phone, 'Phone Number', 'Masukkan Nomor Telepon'),
+                  _buildTextField(Icons.phone, 'Nomor Telepon', 'Masukkan Nomor Telepon'),
 
                   TextField(
                     maxLines: 3,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.home, color: Colors.blueAccent),
-                      labelText: 'Address',
+                      labelText: 'Alamat',
                       hintText: 'Masukkan Alamat Lengkap',
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                     ),
@@ -141,7 +146,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       ),
                       child: const Text(
-                        'REGISTER',
+                        'DAFTAR',
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                     ),
