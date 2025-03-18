@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/register/login_page.dart';
+import 'package:flutter_application_1/register/dashboard_page.dart';
+// import 'package:flutter_application_1/register/login_page.dart';
+// import 'package:flutter_application_1/register/register_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),  
       debugShowCheckedModeBanner: false, // Hilangkan tulisan DEBUG
-      home: LoginPage(),
+      home: DashboardPage(),
     );
   }
 }

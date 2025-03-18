@@ -19,12 +19,10 @@ class _RegisterPageState extends State<RegisterPage> {
       firstDate: DateTime(1900),
       lastDate: DateTime.now(),
     );
-    if (pickedDate != null) {
-      setState(() {
-        _dateController.text = "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
-      });
+    setState(() {
+      _dateController.text = "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+    });
     }
-  }
 
   @override
   Widget build(BuildContext context) {
