@@ -20,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
       lastDate: DateTime.now(),
     );
     setState(() {
-      _dateController.text = "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+      _dateController.text = "${pickedDate?.day}/${pickedDate?.month}/${pickedDate?.year}";
     });
     }
 
